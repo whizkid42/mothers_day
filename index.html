@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Happy Mother's Day ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Patrick+Hand&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Baloo 2', cursive;
+      background:linear-gradient(180deg,#fff0f5,#ffe4ec);
+      overflow-x:hidden;
+      min-height:100vh;
+      color:#222;
+    }
+
+    .hero,
+    .card-section{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    h1{
+      font-size:4rem;
+      animation:floatText 3s ease-in-out infinite;
+    }
+
+    button{
+      margin-top:30px;
+      padding:14px 30px;
+      border:none;
+      border-radius:40px;
+      font-size:1.2rem;
+      cursor:pointer;
+      background:#ff5e8a;
+      color:white;
+      transition:0.3s;
+      box-shadow:0 10px 25px rgba(255,94,138,0.3);
+    }
+
+    button:hover{
+      transform:scale(1.08);
+    }
+
+    .flower{
+      position:relative;
+      width:160px;
+      height:220px;
+      margin-top:40px;
+      animation:bounce 3s infinite ease-in-out;
+    }
+
+    .petal{
+      width:70px;
+      height:70px;
+      background:#ff7aa8;
+      border-radius:50%;
+      position:absolute;
+    }
+
+    .p1{ top:20px; left:45px; }
+    .p2{ top:65px; left:0; }
+    .p3{ top:65px; right:0; }
+    .p4{ top:110px; left:45px; }
+
+    .center{
+      width:60px;
+      height:60px;
+      background:#ffd447;
+      border-radius:50%;
+      position:absolute;
+      top:75px;
+      left:50px;
+      z-index:2;
+    }
+
+    .stem{
+      position:absolute;
+      width:10px;
+      height:120px;
+      background:#4caf50;
+      left:75px;
+      top:120px;
+      border-radius:20px;
+    }
+
+    .bear-wrap{
+      position:relative;
+      animation:bearPop 1s ease;
+    }
+
+    .bear{
+      position:relative;
+      width:360px;
+      height:450px;
+    }
+
+    .bear-body{
+      position:absolute;
+      width:260px;
+      height:270px;
+      background:#f3ebdf;
+      border:4px solid #111;
+      border-radius:45%;
+      bottom:0;
+      left:50px;
+      z-index:1;
+    }
+
+    .bear-head{
+      position:absolute;
+      width:220px;
+      height:170px;
+      background:#f3ebdf;
+      border:4px solid #111;
+      border-radius:45%;
+      top:40px;
+      left:70px;
+      z-index:2;
+    }
+
+    .ear{
+      position:absolute;
+      width:60px;
+      height:60px;
+      background:#f3ebdf;
+      border:4px solid #111;
+      border-radius:50%;
+      top:10px;
+      z-index:1;
+    }
+
+    .ear.left{
+      left:70px;
+    }
+
+    .ear.right{
+      right:70px;
+    }
+
+    .eye{
+      position:absolute;
+      width:14px;
+      height:14px;
+      background:#111;
+      border-radius:50%;
+      top:105px;
+      z-index:5;
+      animation:blink 2s infinite;
+    }
+
+    .eye.left{
+      left:135px;
+    }
+
+    .eye.right{
+      right:135px;
+    }
+
+    .snout{
+      position:absolute;
+      width:72px;
+      height:52px;
+      background:#f8efe3;
+      border:3px solid #111;
+      border-radius:40px;
+      top:112px;
+      left:144px;
+      z-index:4;
+    }
+
+    .nose{
+      position:absolute;
+      width:18px;
+      height:14px;
+      background:#111;
+      border-radius:50%;
+      top:10px;
+      left:25px;
+    }
+
+    .mouth{
+      position:absolute;
+      width:22px;
+      height:12px;
+      border-bottom:3px solid #111;
+      border-radius:50%;
+      top:26px;
+      left:22px;
+    }
+
+    .arm{
+      position:absolute;
+      width:60px;
+      height:120px;
+      background:#f3ebdf;
+      border:4px solid #111;
+      border-radius:50px;
+      top:200px;
+      z-index:2;
+    }
+
+    .arm.left{
+      left:20px;
+      transform:rotate(10deg);
+    }
+
+    .arm.right{
+      right:20px;
+      transform:rotate(-10deg);
+    }
+
+    .paw{
+      position:absolute;
+      width:38px;
+      height:38px;
+      background:#f3ebdf;
+      border:4px solid #111;
+      border-radius:50%;
+      bottom:-10px;
+    }
+
+    .paw.left{
+      left:-4px;
+    }
+
+    .paw.right{
+      right:-4px;
+    }
+
+    .leg{
+      position:absolute;
+      width:95px;
+      height:120px;
+      background:#f3ebdf;
+      border:4px solid #111;
+      border-radius:45%;
+      bottom:-18px;
+      z-index:0;
+    }
+
+    .leg.left{
+      left:78px;
+    }
+
+    .leg.right{
+      right:78px;
+    }
+
+    .card{
+      position:absolute;
+      width:300px;
+      height:0;
+      background:#f6d8d6;
+      border:4px solid #111;
+      border-radius:8px;
+      left:30px;
+      top:140px;
+      z-index:5;
+      overflow:hidden;
+      animation:unfoldCard 2.4s ease forwards;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      padding-top:24px;
+    }
+
+    .card p{
+      width:85%;
+      text-align:left;
+      font-family:'Patrick Hand', cursive;
+      font-size:2rem;
+      line-height:1.2;
+      white-space:pre-line;
+      overflow:hidden;
+      border-right:2px solid #111;
+      padding-right:5px;
+      min-height:180px;
+      animation:caret 0.8s infinite;
+    }
+
+    .always{
+      font-family:'Patrick Hand SC', cursive;
+      font-size:3rem;
+      letter-spacing:3px;
+      display:inline-block;
+      margin-top:6px;
+      color:#ff5b93;
+      text-shadow:0 0 8px rgba(255,91,147,0.35);
+    }
+
+    .floating-hearts span{
+      position:fixed;
+      bottom:-50px;
+      animation:floatUp linear infinite;
+      opacity:0.8;
+    }
+
+    @keyframes floatUp{
+      from{
+        transform:translateY(0);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(-120vh);
+        opacity:1;
+      }
+    }
+
+    @keyframes unfoldCard{
+      from{
+        height:0;
+      }
+
+      to{
+        height:270px;
+      }
+    }
+
+    @keyframes bounce{
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-15px);
+      }
+    }
+
+    @keyframes floatText{
+      0%,100%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-10px);
+      }
+    }
+
+    @keyframes bearPop{
+      from{
+        transform:scale(0.7);
+        opacity:0;
+      }
+
+      to{
+        transform:scale(1);
+        opacity:1;
+      }
+    }
+
+    @keyframes blink{
+      0%,45%,100%{
+        transform:scaleY(1);
+      }
+
+      48%{
+        transform:scaleY(0.1);
+      }
+    }
+
+    @keyframes caret{
+      0%,50%{
+        border-color:#111;
+      }
+
+      51%,100%{
+        border-color:transparent;
+      }
+    }
+
+    @media(max-width:600px){
+
+      h1{
+        font-size:2.7rem;
+      }
+
+      .bear{
+        transform:scale(0.82);
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="floating-hearts"></div>
+
+  <section class="hero" id="home">
+
+    <h1>Happy Mother’s Day ❤️</h1>
+
+    <div class="flower">
+      <div class="petal p1"></div>
+      <div class="petal p2"></div>
+      <div class="petal p3"></div>
+      <div class="petal p4"></div>
+      <div class="center"></div>
+      <div class="stem"></div>
+    </div>
+
+    <button id="clickBtn">Click Me ✨</button>
+
+  </section>
+
+  <section class="card-section hidden" id="cardSection">
+
+    <div class="bear-wrap">
+
+      <div class="bear">
+
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+
+        <div class="bear-head"></div>
+
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+
+        <div class="snout">
+          <div class="nose"></div>
+          <div class="mouth"></div>
+        </div>
+
+        <div class="bear-body"></div>
+
+        <div class="arm left">
+          <div class="paw left"></div>
+        </div>
+
+        <div class="arm right">
+          <div class="paw right"></div>
+        </div>
+
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+
+        <div class="card">
+          <p id="typedMessage"></p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button id="backBtn">Back</button>
+
+  </section>
+
+  <script>
+
+    const clickBtn = document.getElementById('clickBtn');
+    const backBtn = document.getElementById('backBtn');
+
+    const home = document.getElementById('home');
+    const cardSection = document.getElementById('cardSection');
+
+    const typedMessage = document.getElementById('typedMessage');
+
+    const message =
+`Dear Mom,
+I Love You
+Today, Tomorrow and...`;
+
+    let index = 0;
+
+    clickBtn.addEventListener('click', () => {
+
+      home.classList.add('hidden');
+      cardSection.classList.remove('hidden');
+
+      typedMessage.innerHTML = '';
+      index = 0;
+
+      setTimeout(() => {
+        typeWriter();
+      }, 1700);
+
+    });
+
+    backBtn.addEventListener('click', () => {
+
+      cardSection.classList.add('hidden');
+      home.classList.remove('hidden');
+
+    });
+
+    function typeWriter(){
+
+      if(index < message.length){
+
+        typedMessage.textContent += message.charAt(index);
+
+        index++;
+
+        setTimeout(typeWriter,180);
+
+      }
+      else{
+
+        typedMessage.innerHTML +=
+        '<br><span class="always">ALWAYS ❤️ </span><br>';
+
+      }
+
+    }
+
+    const heartsContainer =
+    document.querySelector('.floating-hearts');
+
+    function createHeart(){
+
+      const heart =
+      document.createElement('span');
+
+      heart.innerHTML = '💖';
+
+      heart.style.left =
+      Math.random() * 100 + 'vw';
+
+      heart.style.fontSize =
+      (Math.random() * 20 + 20) + 'px';
+
+      heart.style.animationDuration =
+      (Math.random() * 4 + 4) + 's';
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+
+    }
+
+    setInterval(createHeart, 400);
+
+  </script>
+
+</body>
+</html>
